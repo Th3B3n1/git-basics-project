@@ -2,8 +2,8 @@ let list : Array<number> = [];
 let numberInput : HTMLInputElement = document.getElementById("numberInput") as HTMLInputElement;
 let numberAppendButton : HTMLButtonElement = document.getElementById("numberAppend") as HTMLButtonElement;
 let results : HTMLDivElement = document.getElementById("results") as HTMLDivElement;
-let minimum : HTMLParagraphElement = document.getElementById("minimum") as HTMLParagraphElement;
-let getMinimumButton : HTMLButtonElement = document.getElementById("getMinimum") as HTMLButtonElement;
+let maximum : HTMLParagraphElement = document.getElementById("maximum") as HTMLParagraphElement;
+let getMaximumButton : HTMLButtonElement = document.getElementById("getMaximum") as HTMLButtonElement;
 
 numberAppendButton.addEventListener("click", 
 function() 
@@ -21,11 +21,11 @@ function()
   }
 })
 
-getMinimumButton.addEventListener("click", 
+getMaximumButton.addEventListener("click", 
 function()
 {
-  let min : number = GetMinimum(list);
-  minimum.innerHTML = min.toString();
+  let max : number = GetMaximum(list);
+  maximum.innerHTML = max.toString();
 })
 
 function AddNumberToList(number : number, list : Array<number>) : void
@@ -33,15 +33,15 @@ function AddNumberToList(number : number, list : Array<number>) : void
   list.push(number);
 }
 
-function GetMinimum(list : Array<number>) : number
+function GetMaximum(list : Array<number>) : number
 {
-  let min : number = list[0];
+  let max : number = list[0];
   for (let i : number = 1; i < list.length; i++)
   {
-    if (list[i] < min)
+    if (list[i] > max)
     {
-      min = list[i];
+      max = list[i];
     }
   }
-  return min;
+  return max;
 }
